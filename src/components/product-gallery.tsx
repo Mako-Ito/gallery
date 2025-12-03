@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Download } from 'lucide-react';
+import { useState } from "react";
+import { Download } from "lucide-react";
 
 export interface ProductImage {
   url: string;
@@ -27,7 +27,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
             key={index}
             className="w-[60px] h-[60px] rounded border-2 transition-all bg-[#F7F7F7] overflow-hidden flex-shrink-0"
             style={{
-              borderColor: selectedIndex === index ? '#000000' : '#E0E0E0',
+              borderColor: selectedIndex === index ? "#000000" : "#E0E0E0",
             }}
             onClick={() => setSelectedIndex(index)}
             onMouseEnter={() => setHoveredIndex(index)}
@@ -42,30 +42,28 @@ export function ProductGallery({ images }: ProductGalleryProps) {
         ))}
       </div>
 
-        {/* メイン画像 */}
-        <div className="flex-1 flex flex-col gap-4">
-          <div
-            className="relative w-full bg-[#F7F7F7] overflow-hidden rounded flex items-center justify-center group"
-            style={{ aspectRatio: "9 / 16" }}
+      {/* メイン画像 */}
+      <div className="flex-1 flex flex-col gap-4">
+        <div
+          className="relative w-full bg-[#F7F7F7] overflow-hidden rounded flex items-center justify-center group"
+          style={{ aspectRatio: "9 / 16" }} // ★ ここで9:16固定フレーム
+        >
+          <img
+            src={currentImage.url}
+            alt={currentImage.alt || "メイン画像"}
+            className="w-full h-full object-contain" // ★ 中身は切らずにフィット
+          />
+
+          {/* ダウンロードボタン（デスクトップ：ホバー時表示） */}
+          <a
+            href={currentImage.downloadUrl}
+            download
+            className="absolute bottom-4 right-4 bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all flex items-center gap-2 opacity-0 group-hover:opacity-100"
           >
-            <img
-              src={currentImage.url}
-              alt={currentImage.alt || "メイン画像"}
-              className="w-full h-full object-contain"
-            />
-
-           {/* ダウンロード */}
-            <a
-              href={currentImage.downloadUrl}
-              download
-              className="absolute bottom-4 right-4 bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all flex items-center gap-2 opacity-0 group-hover:opacity-100"
-           >
-              <Download className="w-4 h-4" />
-              <span>ダウンロード</span>
-            </a>
-          </div>
+            <Download className="w-4 h-4" />
+            <span>ダウンロード</span>
+          </a>
         </div>
-
 
         {/* Mobile: サムネイル横スクロール（下側） */}
         <div className="md:hidden overflow-x-auto flex gap-2 pb-2">
@@ -75,7 +73,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
                 key={index}
                 className="w-[60px] h-[60px] rounded border-2 transition-all bg-[#F7F7F7] overflow-hidden flex-shrink-0"
                 style={{
-                  borderColor: selectedIndex === index ? '#000000' : '#E0E0E0',
+                  borderColor: selectedIndex === index ? "#000000" : "#E0E0E0",
                 }}
                 onClick={() => setSelectedIndex(index)}
               >
@@ -88,7 +86,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
             ))}
           </div>
         </div>
-        
+
         {/* Mobile: ダウンロードボタン（常時表示） */}
         <a
           href={currentImage.downloadUrl}
