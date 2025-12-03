@@ -42,9 +42,9 @@ export function ProductGallery({ images }: ProductGalleryProps) {
         ))}
       </div>
 
-      {/* メイン画像：比率は画像のまま、高さだけ上限 */}
+      {/* メイン画像：画像の比率そのまま、高さだけ上限をかける */}
       <div className="flex-1 flex flex-col gap-4">
-        <div className="relative w-full bg-[#F7F7F7] overflow-hidden rounded flex items-center justify-center group">
+        <div className="relative w-full bg-[#F7F7F7] rounded flex items-center justify-center group min-h-[300px] max-h-[80vh] overflow-hidden">
           <img
             src={currentImage.url}
             alt={currentImage.alt || "メイン画像"}
