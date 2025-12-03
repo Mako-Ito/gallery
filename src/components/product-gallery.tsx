@@ -42,25 +42,30 @@ export function ProductGallery({ images }: ProductGalleryProps) {
         ))}
       </div>
 
-      {/* メイン画像 */}
-      <div className="flex-1 flex flex-col gap-4">
-        <div className="relative w-full aspect-square bg-[#F7F7F7] overflow-hidden rounded flex items-center justify-center group">
-          <img
-            src={currentImage.url}
-            alt={currentImage.alt || "メイン画像"}
-            className="w-full h-full object-cover"
-          />
-          
-          {/* ダウンロードボタン */}
-          <a
-            href={currentImage.downloadUrl}
-            download
-            className="absolute bottom-4 right-4 bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all flex items-center gap-2 opacity-0 group-hover:opacity-100"
+        {/* メイン画像 */}
+        <div className="flex-1 flex flex-col gap-4">
+          <div
+            className="relative w-full bg-[#F7F7F7] overflow-hidden rounded flex items-center justify-center group"
+            style={{ aspectRatio: "9 / 16" }}
           >
-            <Download className="w-4 h-4" />
-            <span>ダウンロード</span>
-          </a>
+            <img
+              src={currentImage.url}
+              alt={currentImage.alt || "メイン画像"}
+              className="w-full h-full object-contain"
+            />
+
+           {/* ダウンロード */}
+            <a
+              href={currentImage.downloadUrl}
+              download
+              className="absolute bottom-4 right-4 bg-white hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all flex items-center gap-2 opacity-0 group-hover:opacity-100"
+           >
+              <Download className="w-4 h-4" />
+              <span>ダウンロード</span>
+            </a>
+          </div>
         </div>
+
 
         {/* Mobile: サムネイル横スクロール（下側） */}
         <div className="md:hidden overflow-x-auto flex gap-2 pb-2">
