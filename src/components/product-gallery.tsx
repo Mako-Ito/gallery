@@ -42,13 +42,13 @@ export function ProductGallery({ images }: ProductGalleryProps) {
         ))}
       </div>
 
-      {/* メイン画像：比率は画像のまま、高さだけ上限 */}
+      {/* メイン画像：比率そのまま、高さだけ 30vh 上限 */}
       <div className="flex-1 flex flex-col gap-4">
-        <div className="relative w-full bg-[#F7F7F7] rounded-lg flex items-center justify-center group min-h-[280px] max-h-[70vh] overflow-hidden">
+        <div className="relative w-full bg-[#F7F7F7] rounded-lg flex items-center justify-center group min-h-[200px] max-h-[30vh] overflow-hidden">
           <img
             src={currentImage.url}
             alt={currentImage.alt || "メイン画像"}
-            className="max-h-[70vh] w-auto h-auto object-contain"
+            className="max-h-[30vh] w-auto h-auto object-contain"
           />
 
           {/* ダウンロードボタン（デスクトップ：ホバー表示） */}
